@@ -3,6 +3,9 @@ package mvp.model.api;
 import mvp.model.entity.InfoData;
 import mvp.model.entity.Order;
 import mvp.model.entity.Product;
+import mvp.model.entity.StorageOperation;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -23,6 +26,9 @@ public interface IDataSource {
     @GET("api/v1/info_data/{id}")
     Call<InfoData> loadInfoData(@Path("id") int id);
 
+    @GET("api/v1/operations/{id}")
+    Call<StorageOperation> loadOperations(@Path("id") int id);
+
     @GET("api/v1/products")
     Call<List<Product>> loadProducts();
 
@@ -32,30 +38,42 @@ public interface IDataSource {
     @GET("api/v1/info_data")
     Call<List<InfoData>> loadInfoData();
 
+    @GET("api/v1/operations")
+    Call<List<StorageOperation>> loadOperations();
+
     @POST("api/v1/products")
-    Call createProduct(@Body Product product);
+    Call<Void> createProduct(@Body Product product);
 
     @POST("api/v1/orders")
-    Call createOrder(@Body Order order);
+    Call<Void> createOrder(@Body Order order);
 
     @POST("api/v1/info_data")
-    Call createInfoData(@Body InfoData infoData);
+    Call<Void> createInfoData(@Body InfoData infoData);
+
+    @POST("api/v1/operations")
+    Call<Void> createOperation(@Body StorageOperation storageOperation);
 
     @PUT("api/v1/products/{id}")
-    Call editProduct(@Path("id") int id, @Body Product product);
+    Call<Void> editProduct(@Path("id") int id, @Body Product product);
 
     @PUT("api/v1/orders/{id}")
-    Call editOrder(@Path("id") int id, @Body Order order);
+    Call<Void> editOrder(@Path("id") int id, @Body Order order);
 
     @PUT("api/v1/info_data/{id}")
-    Call editInfoData(@Path("id") int id, @Body InfoData infoData);
+    Call<Void> editInfoData(@Path("id") int id, @Body InfoData infoData);
+
+    @PUT("api/v1/operations/{id}")
+    Call<Void> editOperation(@Path("id") int id, @Body StorageOperation storageOperation);
 
     @DELETE("api/v1/products/{id}")
-    Call deleteProduct(@Path("id") int id);
+    Call<Void> deleteProduct(@Path("id") int id);
 
     @DELETE("api/v1/orders/{id}")
-    Call deleteOrder(@Path("id") int id);
+    Call<Void> deleteOrder(@Path("id") int id);
 
     @DELETE("api/v1/info_data/{id}")
-    Call deleteInfoData(@Path("id") int id);
+    Call<Void> deleteInfoData(@Path("id") int id);
+
+    @DELETE("api/v1/operations/{id}")
+    Call<Void> deleteOperation(@Path("id") int id);
 }

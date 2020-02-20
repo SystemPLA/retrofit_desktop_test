@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="retrofit_desktop_test" />
         <module name="retrofit_in_desktop" />
       </profile>
     </annotationProcessing>
